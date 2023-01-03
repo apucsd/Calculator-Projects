@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+
+    }
+    body{
+      background-color: #ecf0f3;
+    }
+    .container{
+      
+      margin:  40px auto;
+      height:440px;
+      width: 300px;
+      background: #ecf0f3;
+      box-shadow: 10px 10px 15px #cbced1,
+                  -10px -10px 15px white;
+      
+    }
+    input{
+      width: 99%;
+      background: #ecf0f3;
+      box-shadow: 10px 10px 15px #cbced1,
+                  -0px -0px 15px white;
+      padding: 35px;
+      font-size: 2.3rem;
+     
+      font-weight: bold;
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      text-align: right;
+
+      border: none;
+      
+    }
+   
+   button{
+    
+    width: 72px;
+    height: 62px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.2rem;
+    box-shadow: 1px 1px 15px #cbced1,
+                  -0px -0px 15px white;
+    
+    border: none;
+    cursor: pointer;
+
+   
+   }
+   button:hover{
+    font-size: 1.3rem;
+   }
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input type="text">
+    <div class="calc-body">
+      <table>
+          <tr class="tr1">
+              <td><button onclick="calc_clr()" >C</button></td>
+              <td><button>+/-</button></td>
+              <td><button onclick="calc_value('%')">%</button ></td>
+              <td ><button onclick="calc_value('/')">/</button></td>
+          </tr>
+          <tr>
+              <td><button  onclick="calc_value('7')">7</button></td>
+              <td><button  onclick="calc_value('8')">8</button></td>
+              <td><button  onclick="calc_value('9')">9</button></td>
+              <td><button  onclick="calc_value('*')" >X</button></td>
+          </tr>
+          <tr>
+              <td><button onclick="calc_value('4')">4</button></td>
+              <td><button  onclick="calc_value('5')">5</button></td>
+              <td><button  onclick="calc_value('6')">6</button></td>
+              <td><button  onclick="calc_value('-')" >-</button></td>
+          </tr>
+          <tr>
+              <td><button  onclick="calc_value('1')">1</button></td>
+              <td><button onclick="calc_value('2')">2</button></td>
+              <td><button onclick="calc_value('3')">3</button></td>
+              <td><button  onclick="calc_value('+')">+</button></td>
+          </tr>
+          <tr>
+              <td><button  onclick="calc_value('0')">0</button></td>
+              <td><button onclick="calc_value('.')">.</button></td>
+              <td><button onclick="calc_del()">DEl</button></td>
+              <td><button onclick="calc_result()" style="background-color: rgb(38, 214, 19);">=</button></td>
+          </tr>
+      </table>
+
+  </div>
+</div>
+
+  </div>
+  <script>
+  
+    var inputResult = document.querySelector("input");
+    function calc_value(value){
+      var calcValue =value; 
+      inputResult.value+=calcValue;
+      
+    };
+    function calc_result(){
+      var Allvalue = inputResult.value;
+      var result = eval(Allvalue);
+      inputResult.value=result;
+
+    }
+    function calc_clr(){
+      inputResult.value="";
+      
+    }
+    function calc_del(){
+      inputResult.value=inputResult.value.substr(0, inputResult.value.length - 1);
+      
+      
+    }
+    document.body.addEventListener("keypress",function(e){
+      var pressedValue=(e.key);
+    if(pressedValue =="0" ||pressedValue=="1"|| pressedValue=="2" ||pressedValue=="3" ||pressedValue=="4" ||pressedValue=="5" ||pressedValue=="6" ||pressedValue=="7"  ||pressedValue=="8" ||pressedValue=="9")
+        {
+       inputResult.value+=pressedValue;
+
+
+    }else if(pressedValue == "+" || pressedValue == "-" || pressedValue == "*" || pressedValue == "/"){
+
+       
+    inputResult.value+=pressedValue;
+    }else if(pressedValue == "Enter"){
+      var Allvalue = inputResult.value;
+      var result = eval(Allvalue);
+      inputResult.value=result;
+
+    }//else if(pressedValue == "backspace"){
+      //inputResult.value=inputResult.value.substr(0, inputResult.value.length - 1);
+
+    //}
+   });
+
+   
+  
+  
+   
+  </script>
+
+  
+</body>
+</html>
